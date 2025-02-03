@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Blank
@@ -13,20 +13,108 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class = "ion-padding">
+  <div class="ion-padding">
     <ng-container *ngIf="listPokemons; else loading">
       <ion-card *ngFor="let item of listPokemons; index as i" (click)="handleDetail(item.url)">
-      <ion-card-header>
-        <ion-card-title>{{ item.name }} </ion-card-title>
-      </ion-card-header>
+        <ion-card-header>
+          <ion-card-title>{{ item.name }} {{ item.type }}</ion-card-title>
+        </ion-card-header>
       </ion-card>
-      <ion-card-content>
-        <p>{{ item.id }}</p>
-      </ion-card-content>    
     </ng-container>
-  </ion-content>
-
+  </div>
+  
   <ng-template #loading>
     <ion-spinner name="crescent"></ion-spinner>
-  </ng-template>
-</ion-content>
+  </ng-template> -->
+
+
+
+<!--   
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Blank
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <div class="ion-padding">
+      <ng-container *ngIf="listPokemons; else loading">
+        <ion-card *ngFor="let item of listPokemons; index as i" (click)="handleDetail(item.url)">
+          <ion-card-header>
+            <ion-card-title>{{ item.name }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ng-container>
+    </div>
+    
+    <ng-template #loading>
+      <ion-spinner name="crescent"></ion-spinner>
+    </ng-template>
+  </ion-content> -->
+
+  <!-- <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Blank
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Blank</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <div class="ion-padding">
+      <ng-container *ngIf="listPokemons; else loading">
+        <ion-card *ngFor="let card of cards; let j = ind, let item of listPokemons; index as i" (click)="handleDetail(item.url)">
+          <ion-card-header (click) = "toggleCard(j)">
+            <ion-card-title>{{ item.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content *ngIf="selectedCardIndex === j">
+            <p>Tipo: {{ item.type }}</p>
+           Puedes añadir más detalles aquí 
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+    </div>
+    
+    <ng-template #loading>
+      <ion-spinner name="crescent"></ion-spinner>
+    </ng-template>
+  </ion-content> -->
+
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Lista de Pokémon
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card *ngFor="let pokemon of listPokemons; let i = index">
+      <ion-card-header (click)="toggleCard(i)">
+        <ion-card-title>
+          {{ pokemon.name }}  
+        </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content *ngIf="selectedCardIndex === i">
+        <p>Type: {{ pokemon.type }}</p>
+        <p>{{ pokemon.description }}</p>
+        <ion-button (click)="handleDetail(pokemon.url)">Ver detalles</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
