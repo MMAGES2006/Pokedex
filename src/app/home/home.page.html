@@ -98,7 +98,7 @@
   <ion-header>
     <ion-toolbar>
       <ion-title>
-        Lista de Pokémon
+        Pokedex Kanto
       </ion-title>
     </ion-toolbar>
   </ion-header>
@@ -113,8 +113,6 @@
   
       <ion-card-content *ngIf="selectedCardIndex === i">
         <p>Type: {{ pokemon.type }}</p>
-        <p>{{ pokemon.description }}</p>
-        <ion-button (click)="handleDetail(pokemon.url)">Ver detalles</ion-button>
       </ion-card-content>
     </ion-card>
   </ion-content>
